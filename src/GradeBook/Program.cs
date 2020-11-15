@@ -13,7 +13,7 @@ namespace GradeBook
             {
                 sum += grade;
             }
-            System.Console.WriteLine(sum);
+            System.Console.WriteLine($"Avg: {(sum/grades.Count):N1}");
 
             if (args.Length > 0) 
             {
