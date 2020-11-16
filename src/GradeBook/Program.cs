@@ -8,8 +8,7 @@ namespace GradeBook
         static void Main(string[] args)
         {
             var gradebook = new Book(new List<double>() {1.1, 2.0, 3.0, 4.0}, "The gradebook");
-
-            Console.WriteLine($"Avg: {gradebook.GetGPA():N1}");
+            gradebook.PrintStatistics();
         }
     }
 }

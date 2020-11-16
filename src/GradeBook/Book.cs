@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace GradeBook
@@ -6,6 +7,9 @@ namespace GradeBook
     {
         private List<double> grades;
         private string name;
+        private double highGrade;
+        private double GPA;
+        private double lowGrade;
 
         public Book()
         {
@@ -28,14 +32,26 @@ namespace GradeBook
             return this.grades;
         }
 
-        public double GetGPA() 
+        public void PrintStatistics()
+        {
+            CalculateStatistics();
+            System.Console.WriteLine($"High Grade: {highGrade}\nLow Grade: {lowGrade}\nGPA: {GPA}");
+        }
+
+        private void CalculateStatistics() 
         {
             var sum = 0.0;
+            lowGrade = double.MaxValue;
+            highGrade = double.MinValue;
+
             foreach(var grade in grades)
             {
+                lowGrade = Math.Min(grade, lowGrade);
+                highGrade = Math.Max(grade, highGrade);
                 sum += grade;
             }
-            return sum/grades.Count;
+
+            GPA = sum/grades.Count;
         }
     }
 }
